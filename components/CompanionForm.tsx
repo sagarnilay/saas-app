@@ -22,6 +22,8 @@ import {
     SelectValue,
   } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
+import { subjects } from "@/constants"
+import { Textarea } from "./ui/textarea"
  
 
 const formSchema = z.object({
@@ -70,77 +72,123 @@ const CompanionForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Subject</FormLabel>
+              <FormControl>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a verified email to display" />
+                  <SelectTrigger className="input captilize">
+                    <SelectValue placeholder="Select the subject"/>
                   </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
-                  <SelectItem value="m@google.com">m@google.com</SelectItem>
-                  <SelectItem value="m@support.com">m@support.com</SelectItem>
-                </SelectContent>
+                
+                <SelectContent> 
+                  {subjects.map((subject) => (
+                        <SelectItem 
+                            value={subject}
+                            key={subject}
+                            className="capitalize"
+                        >
+                            {subject}
+                        </SelectItem>
+                  ))}
+                    </SelectContent>
               </Select>
+              </FormControl>
               <FormControl>
               </FormControl> 
               <FormMessage />
             </FormItem>
           )}
         />
-                <FormField
+
+        <FormField
           control={form.control}
-          name="name"
+          name="topic"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Companion name</FormLabel>
+              <FormLabel>What should the companion help with?</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the companion name" {...field} className="input" />
+                <Textarea placeholder="Ex. Derivative & Integrals" {...field} className="input" />
               </FormControl> 
               <FormMessage />
             </FormItem>
           )}
         />
-                <FormField
+    <FormField
           control={form.control}
-          name="name"
+          name="voice"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Companion name</FormLabel>
+              <FormLabel>Voice</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the companion name" {...field} className="input" />
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <SelectTrigger className="input">
+                    <SelectValue placeholder="Voice"/>
+                  </SelectTrigger>
+                
+                <SelectContent> 
+                    <SelectItem value="male">
+                        Male
+                    </SelectItem>
+                    <SelectItem value="female">
+                        Female
+                    </SelectItem>
+                    </SelectContent>
+              </Select>
+              </FormControl>
+              <FormControl>
               </FormControl> 
               <FormMessage />
             </FormItem>
           )}
         />
-                <FormField
+
+    <FormField
           control={form.control}
-          name="name"
+          name="style"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Companion name</FormLabel>
+              <FormLabel>Style</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the companion name" {...field} className="input" />
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <SelectTrigger className="input">
+                    <SelectValue placeholder="Select the style"/>
+                  </SelectTrigger>
+                
+                <SelectContent> 
+                    <SelectItem value="formal">
+                        Formal
+                    </SelectItem>
+                    <SelectItem value="casual">
+                        Casual
+                    </SelectItem>
+                    </SelectContent>
+              </Select>
+              </FormControl>
+              <FormControl>
               </FormControl> 
               <FormMessage />
             </FormItem>
           )}
         />
-                <FormField
+    <FormField
           control={form.control}
-          name="name"
+          name="duration"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Companion name</FormLabel>
+              <FormLabel>Estimated session duration</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the companion name" {...field} className="input" />
+                <Input 
+                    type="number"
+                    placeholder="15"
+                    {... field}
+                    className="input"
+                />
+              </FormControl>
+              <FormControl>
               </FormControl> 
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="w-full cursor-pointer">Build Your Companion</Button>
       </form>
     </Form>
     </div>
