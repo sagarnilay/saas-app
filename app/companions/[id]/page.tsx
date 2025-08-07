@@ -2,7 +2,7 @@ import React from 'react'
 
 const CompanionSession = () => {
   return (
-    <div>page</div>
+    <div>CompanionSession</div>
   )
 }
 
