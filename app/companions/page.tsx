@@ -1,6 +1,6 @@
 import CompanionCard from '@/components/CompanionCard';
 import SearchInput from '@/components/SearchInput';
-import { SubjectFilter } from '@/components/SubjectFilter';
+import SubjectFilter from '@/components/SubjectFilter';
 import { getAllCompanions } from '@/lib/actions/companion.actions';
 import { getSubjectColor } from '@/lib/utils';
 import React from 'react'
